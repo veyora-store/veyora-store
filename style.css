@@ -2903,3 +2903,31 @@ footer > p {
   }
 
 }
+
+/* Order Buttons */
+.order-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.order-buttons button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+}
+
+.instagram-btn {
+    background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+    color: white;
+}
