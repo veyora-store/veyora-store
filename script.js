@@ -1,35 +1,46 @@
-// ==========================================
-// VEYORA STORE
-// PRODUCT DATABASE
-// ==========================================
+/* =====================================================
+   VEYORA STORE
+   PRODUCT + CART + WHATSAPP SYSTEM
+===================================================== */
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
 
 const products = [
 
   {
     id: 1,
-    name: "Minimal Table Lamp",
-    category: "home",
-    price: 799,
-    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
-    description: "A modern minimal lamp that adds a warm and elegant look to your room."
+    name: "Premium Stainless Steel Watch",
+    category: "lifestyle",
+    price: 999,
+    tag: "BESTSELLER",
+    image: "watch.png",
+    description:
+      "A stylish stainless steel watch with a premium design, perfect for everyday wear and special occasions."
   },
 
   {
     id: 2,
-    name: "Aesthetic Vase",
+    name: "Minimal Table Lamp",
     category: "home",
     price: 499,
-    image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=800&q=80",
-    description: "Elegant decorative vase for modern homes and bedrooms."
+    tag: "NEW",
+    image: "lamp.png",
+    description:
+      "A modern minimal table lamp designed to give your room a warm and elegant atmosphere."
   },
 
   {
     id: 3,
-    name: "Premium Watch",
-    category: "lifestyle",
-    price: 999,
-    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80",
-    description: "A stylish everyday watch with a premium modern appearance."
+    name: "Aesthetic Decorative Vase",
+    category: "home",
+    price: 399,
+    tag: "TRENDING",
+    image: "vase.png",
+    description:
+      "A beautiful decorative vase that adds a clean and aesthetic touch to your home."
   },
 
   {
@@ -37,8 +48,10 @@ const products = [
     name: "Portable LED Light",
     category: "electronics",
     price: 599,
-    image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=80",
-    description: "Compact LED light for your desk, bedroom or workspace."
+    tag: "POPULAR",
+    image: "led.png",
+    description:
+      "Compact portable LED light with a modern design. Perfect for home, travel and everyday use."
   },
 
   {
@@ -46,92 +59,159 @@ const products = [
     name: "Beauty Organizer",
     category: "beauty",
     price: 449,
-    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80",
-    description: "Keep your beauty essentials organized with this stylish organizer."
+    tag: "NEW",
+    image: "beauty.png",
+    description:
+      "Keep your cosmetics, makeup and beauty essentials organized in one stylish place."
   },
 
   {
     id: 6,
-    name: "Modern Cushion",
+    name: "Modern Soft Cushion",
     category: "home",
-    price: 399,
-    image: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=800&q=80",
-    description: "Soft decorative cushion designed for a comfortable modern interior."
+    price: 349,
+    tag: "TRENDING",
+    image: "cushion.png",
+    description:
+      "A soft modern cushion designed to make your room more comfortable and stylish."
   }
 
 ];
 
 
-// ==========================================
-// CART
-// ==========================================
+/* =====================================================
+   CART
+===================================================== */
 
 let cart = [];
 
 
-// ==========================================
-// DISPLAY PRODUCTS
-// ==========================================
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const productGrid =
+  document.getElementById("productGrid");
+
+const productCount =
+  document.getElementById("productCount");
+
+const noProducts =
+  document.getElementById("noProducts");
+
+const cartDrawer =
+  document.getElementById("cartDrawer");
+
+const cartOverlay =
+  document.getElementById("cartOverlay");
+
+const cartItems =
+  document.getElementById("cartItems");
+
+const emptyCart =
+  document.getElementById("emptyCart");
+
+const cartTotal =
+  document.getElementById("cartTotal");
+
+const cartCount =
+  document.getElementById("cartCount");
+
+
+/* =====================================================
+   DISPLAY PRODUCTS
+===================================================== */
 
 function displayProducts(list = products) {
 
-  const grid = document.getElementById("productGrid");
+  productGrid.innerHTML = "";
 
-  grid.innerHTML = "";
+  productCount.innerText =
+    list.length + " PRODUCTS";
+
 
   if (list.length === 0) {
 
-    grid.innerHTML = `
-      <p style="grid-column:1/-1;text-align:center;padding:50px;">
-        No products found.
-      </p>
-    `;
+    noProducts.style.display = "block";
 
     return;
+
   }
 
-  list.forEach(product => {
+  noProducts.style.display = "none";
 
-    grid.innerHTML += `
 
-      <div class="product-card">
+  list.forEach((product, index) => {
+
+    const card =
+      document.createElement("article");
+
+    card.className = "product-card";
+
+    card.style.animationDelay =
+      `${index * 0.05}s`;
+
+
+    card.innerHTML = `
+
+      <div class="product-image-wrapper">
 
         <img
           class="product-image"
           src="${product.image}"
           alt="${product.name}"
           loading="lazy"
+          onerror="this.src='data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500">
+              <rect width="100%" height="100%" fill="#eeeeee"/>
+              <text x="50%" y="50%" text-anchor="middle"
+                dominant-baseline="middle"
+                font-family="Arial"
+                font-size="20"
+                fill="#888">
+                VEYORA
+              </text>
+            </svg>
+          `)}'"
         >
 
-        <div class="product-info">
+        <span class="product-tag">
+          ${product.tag}
+        </span>
 
-          <div class="product-category">
-            ${product.category}
-          </div>
+      </div>
 
-          <div class="product-name">
-            ${product.name}
-          </div>
 
-          <div class="product-price">
-            ₹${product.price}
-          </div>
+      <div class="product-info">
 
-          <div class="product-buttons">
+        <p class="product-category">
+          ${product.category}
+        </p>
 
-            <button
-              class="view-btn"
-              onclick="viewProduct(${product.id})">
-              VIEW
-            </button>
+        <h3 class="product-name">
+          ${product.name}
+        </h3>
 
-            <button
-              class="add-btn"
-              onclick="addToCart(${product.id})">
-              ADD
-            </button>
+        <div class="product-price">
+          ₹${product.price.toLocaleString("en-IN")}
+        </div>
 
-          </div>
+
+        <div class="product-buttons">
+
+          <button
+            class="view-btn"
+            onclick="viewProduct(${product.id})"
+          >
+            VIEW
+          </button>
+
+          <button
+            class="add-btn"
+            onclick="addToCart(${product.id})"
+          >
+            ADD +
+          </button>
 
         </div>
 
@@ -139,48 +219,86 @@ function displayProducts(list = products) {
 
     `;
 
+
+    productGrid.appendChild(card);
+
   });
 
 }
 
 
-// ==========================================
-// SEARCH
-// ==========================================
+/* =====================================================
+   SEARCH
+===================================================== */
 
 function searchProducts() {
 
-  const search =
+  const input =
     document
       .getElementById("searchInput")
       .value
       .toLowerCase()
       .trim();
 
-  const results = products.filter(product =>
 
-    product.name
-      .toLowerCase()
-      .includes(search)
+  const results =
+    products.filter(product => {
 
-    ||
+      return (
+        product.name
+          .toLowerCase()
+          .includes(input)
 
-    product.category
-      .toLowerCase()
-      .includes(search)
+        ||
 
-  );
+        product.category
+          .toLowerCase()
+          .includes(input)
+      );
+
+    });
+
 
   displayProducts(results);
 
 }
 
 
-// ==========================================
-// CATEGORY FILTER
-// ==========================================
+function clearSearch() {
 
-function filterProducts(category) {
+  document.getElementById(
+    "searchInput"
+  ).value = "";
+
+  displayProducts(products);
+
+}
+
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+
+function filterProducts(
+  category,
+  clickedButton
+) {
+
+  document
+    .querySelectorAll(".category-button")
+    .forEach(button => {
+
+      button.classList.remove("active");
+
+    });
+
+
+  if (clickedButton) {
+
+    clickedButton.classList.add("active");
+
+  }
+
 
   if (category === "all") {
 
@@ -190,32 +308,43 @@ function filterProducts(category) {
 
   }
 
-  const results = products.filter(
-    product => product.category === category
-  );
+
+  const results =
+    products.filter(
+      product =>
+        product.category === category
+    );
+
 
   displayProducts(results);
 
 }
 
 
-// ==========================================
-// ADD TO CART
-// ==========================================
+/* =====================================================
+   ADD TO CART
+===================================================== */
 
 function addToCart(id) {
 
   const product =
-    products.find(p => p.id === id);
+    products.find(
+      product => product.id === id
+    );
+
 
   if (!product) return;
 
+
   const existing =
-    cart.find(item => item.id === id);
+    cart.find(
+      item => item.id === id
+    );
+
 
   if (existing) {
 
-    existing.quantity++;
+    existing.quantity += 1;
 
   } else {
 
@@ -229,163 +358,165 @@ function addToCart(id) {
 
   }
 
+
   updateCart();
 
-  alert(
-    product.name + " added to cart!"
-  );
+  openCart();
 
 }
 
 
-// ==========================================
-// UPDATE CART
-// ==========================================
+/* =====================================================
+   UPDATE CART
+===================================================== */
 
 function updateCart() {
-
-  const cartItems =
-    document.getElementById("cartItems");
-
-  const cartCount =
-    document.getElementById("cartCount");
-
-  const cartTotal =
-    document.getElementById("cartTotal");
-
 
   cartItems.innerHTML = "";
 
 
   let total = 0;
 
-  let count = 0;
+  let quantityTotal = 0;
 
 
   cart.forEach(item => {
 
-    total +=
+    const itemTotal =
       item.price * item.quantity;
 
-    count +=
-      item.quantity;
+
+    total += itemTotal;
+
+    quantityTotal += item.quantity;
 
 
-    cartItems.innerHTML += `
+    const cartItem =
+      document.createElement("div");
 
-      <div class="cart-item">
+    cartItem.className = "cart-item";
 
-        <img
-          src="${item.image}"
-          alt="${item.name}"
-        >
 
-        <div class="cart-item-info">
+    cartItem.innerHTML = `
 
-          <h4>
-            ${item.name}
-          </h4>
+      <img
+        class="cart-item-image"
+        src="${item.image}"
+        alt="${item.name}"
+      >
 
-          <p>
-            ₹${item.price} × ${item.quantity}
-          </p>
+      <div class="cart-item-info">
 
+        <h4>
+          ${item.name}
+        </h4>
+
+        <p>
+          Quantity: ${item.quantity}
+        </p>
+
+        <div class="cart-item-price">
+          ₹${itemTotal.toLocaleString("en-IN")}
         </div>
-
-        <button
-          class="remove-btn"
-          onclick="removeFromCart(${item.id})">
-
-          ✕
-
-        </button>
 
       </div>
 
+      <button
+        class="remove-btn"
+        onclick="removeFromCart(${item.id})"
+      >
+        ×
+      </button>
+
     `;
+
+
+    cartItems.appendChild(cartItem);
 
   });
 
 
+  cartTotal.innerText =
+    "₹" + total.toLocaleString("en-IN");
+
+
+  cartCount.innerText =
+    quantityTotal;
+
+
   if (cart.length === 0) {
 
-    cartItems.innerHTML = `
-      <p style="text-align:center;color:#777;">
-        Your cart is empty.
-      </p>
-    `;
+    emptyCart.classList.add("show");
+
+  } else {
+
+    emptyCart.classList.remove("show");
 
   }
-
-
-  cartCount.textContent = count;
-
-  cartTotal.textContent =
-    "₹" + total;
 
 }
 
 
-// ==========================================
-// REMOVE FROM CART
-// ==========================================
+/* =====================================================
+   REMOVE FROM CART
+===================================================== */
 
 function removeFromCart(id) {
 
   cart =
-    cart.filter(item => item.id !== id);
+    cart.filter(
+      item => item.id !== id
+    );
+
 
   updateCart();
 
 }
 
 
-// ==========================================
-// OPEN CART
-// ==========================================
+/* =====================================================
+   OPEN CART
+===================================================== */
 
 function openCart() {
 
-  document
-    .getElementById("cart")
-    .classList
-    .add("active");
+  cartDrawer.classList.add("active");
 
-  document
-    .getElementById("cartOverlay")
-    .classList
-    .add("active");
+  cartOverlay.classList.add("active");
+
+  document.body.style.overflow =
+    "hidden";
 
 }
 
 
-// ==========================================
-// CLOSE CART
-// ==========================================
+/* =====================================================
+   CLOSE CART
+===================================================== */
 
 function closeCart() {
 
-  document
-    .getElementById("cart")
-    .classList
-    .remove("active");
+  cartDrawer.classList.remove("active");
 
-  document
-    .getElementById("cartOverlay")
-    .classList
-    .remove("active");
+  cartOverlay.classList.remove("active");
+
+  document.body.style.overflow =
+    "";
 
 }
 
 
-// ==========================================
-// PRODUCT DETAILS
-// ==========================================
+/* =====================================================
+   PRODUCT MODAL
+===================================================== */
 
 function viewProduct(id) {
 
   const product =
-    products.find(p => p.id === id);
+    products.find(
+      product => product.id === id
+    );
+
 
   if (!product) return;
 
@@ -396,72 +527,167 @@ function viewProduct(id) {
 
 
   document.getElementById(
+    "modalImage"
+  ).alt = product.name;
+
+
+  document.getElementById(
     "modalCategory"
-  ).textContent =
+  ).innerText =
     product.category;
 
 
   document.getElementById(
     "modalName"
-  ).textContent =
+  ).innerText =
     product.name;
 
 
   document.getElementById(
     "modalPrice"
-  ).textContent =
-    "₹" + product.price;
+  ).innerText =
+    "₹" +
+    product.price.toLocaleString("en-IN");
 
 
   document.getElementById(
     "modalDescription"
-  ).textContent =
+  ).innerText =
     product.description;
 
 
   document.getElementById(
     "modalAddButton"
-  ).onclick =
-    function () {
+  ).onclick = function () {
 
-      addToCart(product.id);
+    addToCart(product.id);
 
-      closeProduct();
+    closeProduct();
 
-    };
+  };
 
 
   document
     .getElementById("productModal")
-    .classList
-    .add("active");
+    .classList.add("active");
+
+
+  document.body.style.overflow =
+    "hidden";
 
 }
 
 
-// ==========================================
-// CLOSE PRODUCT
-// ==========================================
+/* =====================================================
+   CLOSE PRODUCT
+===================================================== */
 
 function closeProduct() {
 
   document
     .getElementById("productModal")
-    .classList
-    .remove("active");
+    .classList.remove("active");
+
+
+  document.body.style.overflow =
+    "";
 
 }
 
 
-// ==========================================
-// WHATSAPP ORDER
-// ==========================================
+function closeProductOutside(event) {
+
+  if (
+    event.target.id ===
+    "productModal"
+  ) {
+
+    closeProduct();
+
+  }
+
+}
+
+
+/* =====================================================
+   WHATSAPP ORDER
+===================================================== */
 
 function orderWhatsApp() {
 
   if (cart.length === 0) {
 
-    alert("Your cart is empty!");
+    alert(
+      "Your cart is empty!"
+    );
+
+    return;
+
+  }
+
+
+  const name =
+    document
+      .getElementById("customerName")
+      .value
+      .trim();
+
+
+  const phone =
+    document
+      .getElementById("customerPhone")
+      .value
+      .trim();
+
+
+  const house =
+    document
+      .getElementById("customerHouse")
+      .value
+      .trim();
+
+
+  const area =
+    document
+      .getElementById("customerArea")
+      .value
+      .trim();
+
+
+  const city =
+    document
+      .getElementById("customerCity")
+      .value
+      .trim();
+
+
+  const state =
+    document
+      .getElementById("customerState")
+      .value
+      .trim();
+
+
+  const pincode =
+    document
+      .getElementById("customerPincode")
+      .value
+      .trim();
+
+
+  if (
+    !name ||
+    !phone ||
+    !house ||
+    !area ||
+    !city ||
+    !state ||
+    !pincode
+  ) {
+
+    alert(
+      "Please fill in all delivery details."
+    );
 
     return;
 
@@ -469,74 +695,116 @@ function orderWhatsApp() {
 
 
   let message =
-    "Hello VEYORA STORE 👋%0A%0A";
 
-  message +=
-    "I want to order:%0A%0A";
+`🛍️ *NEW VEYORA STORE ORDER*
+
+👤 *CUSTOMER DETAILS*
+
+Name: ${name}
+📱 Phone: ${phone}
+🏠 House/Building: ${house}
+📍 Area: ${area}
+🏙️ City: ${city}
+🗺️ State: ${state}
+📮 Pincode: ${pincode}
+
+📦 *ORDER DETAILS*
+
+`;
 
 
   let total = 0;
 
 
-  cart.forEach(item => {
+  cart.forEach(
+    (item, index) => {
 
-    const itemTotal =
-      item.price * item.quantity;
+      const itemTotal =
+        item.price *
+        item.quantity;
 
-    total += itemTotal;
+
+      total += itemTotal;
 
 
-    message +=
-      "🛍️ " +
-      item.name +
-      "%0A";
+      message +=
 
-    message +=
-      "Quantity: " +
-      item.quantity +
-      "%0A";
+`${index + 1}. ${item.name}
+Quantity: ${item.quantity}
+Price: ₹${itemTotal}
 
-    message +=
-      "Price: ₹" +
-      itemTotal +
-      "%0A%0A";
+`;
 
-  });
+    }
+  );
 
 
   message +=
-    "💰 Total: ₹" +
-    total +
-    "%0A%0A";
 
-  message +=
-    "Please confirm my order. Thank you!";
+`💰 *TOTAL: ₹${total}*
+
+✅ Please confirm my order.
+
+🙏 Thank you for shopping with VEYORA STORE!`;
 
 
-  // ======================================
-  // CHANGE THIS NUMBER TO YOUR WHATSAPP
-  // ======================================
+  /*
+    IMPORTANT:
 
-  const phone =
+    Replace 919999999999
+    with YOUR WhatsApp number.
+
+    India example:
+
+    9876543210
+
+    becomes:
+
+    919876543210
+  */
+
+  const whatsappNumber =
     "919999999999";
 
 
-  const url =
+  const whatsappURL =
+
     "https://wa.me/" +
-    phone +
+    whatsappNumber +
     "?text=" +
-    message;
+    encodeURIComponent(message);
 
 
-  window.open(url, "_blank");
+  window.location.href =
+    whatsappURL;
 
 }
 
 
-// ==========================================
-// START WEBSITE
-// ==========================================
+/* =====================================================
+   ESC KEY
+===================================================== */
 
-displayProducts();
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "Escape") {
+
+      closeCart();
+
+      closeProduct();
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   START WEBSITE
+===================================================== */
+
+displayProducts(products);
 
 updateCart();
