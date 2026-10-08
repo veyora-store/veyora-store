@@ -28,7 +28,7 @@ const products = [
     name: "Premium Watch",
     category: "lifestyle",
     price: 999,
-    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80",
+    image: "file_000000000ad082118836a39afa7b0e9d.png",
     description: "A stylish everyday watch with a premium modern appearance."
   },
 
