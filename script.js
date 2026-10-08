@@ -12,11 +12,11 @@ const products = [
 
   {
     id: 1,
-    name: "Premium Stainless Steel Watch",
+    name: "Rosemary water",
     category: "lifestyle",
     price: 999,
     tag: "BESTSELLER",
-    image: "watch.png",
+    image: "file_00000000ccc48211b5df4d04422e6b03.png",
     description:
       "A stylish stainless steel watch with a premium design, perfect for everyday wear and special occasions."
   },
