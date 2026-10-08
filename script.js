@@ -14,7 +14,7 @@ const products = [
     id: 1,
     name: "Rosemary water",
     category: "lifestyle",
-    price: 399,
+    price: 349,
     tag: "BESTSELLER",
     image: "file_00000000ccc48211b5df4d04422e6b03.png",
     description:
