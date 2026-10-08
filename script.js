@@ -23,13 +23,13 @@ const products = [
 
   {
     id: 2,
-    name: "Minimal Table Lamp",
-    category: "home",
-    price: 499,
+    name: "Premium watch",
+    category: "lifestyle",
+    price: 399,
     tag: "NEW",
-    image: "lamp.png",
+    image: "watch.png",
     description:
-      "A modern minimal table lamp designed to give your room a warm and elegant atmosphere."
+      "⌚ Timeless style. Premium feel. Made to stand out. ✨."
   },
 
   {
