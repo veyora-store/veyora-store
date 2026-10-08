@@ -627,7 +627,7 @@ function orderWhatsApp() {
 
 
    function orderInstagram() {
-    const instagramUsername = "YOUR_INSTAGRAM_USERNAME";
+    const instagramUsername = "veyora.store_";
 
     const instagramURL =
         "https://instagram.com/" + instagramUsername;
