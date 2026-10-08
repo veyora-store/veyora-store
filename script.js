@@ -14,11 +14,11 @@ const products = [
     id: 1,
     name: "Rosemary water",
     category: "lifestyle",
-    price: 999,
+    price: 399,
     tag: "BESTSELLER",
     image: "file_00000000ccc48211b5df4d04422e6b03.png",
     description:
-      "A stylish stainless steel watch with a premium design, perfect for everyday wear and special occasions."
+      "best for hair care."
   },
 
   {
