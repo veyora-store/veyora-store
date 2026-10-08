@@ -18,7 +18,7 @@ const products = [
     tag: "BESTSELLER",
     image: "file_00000000ccc48211b5df4d04422e6b03.png",
     description:
-      "best for hair care."
+      "Healthy hair starts with nature."
   },
 
   {
