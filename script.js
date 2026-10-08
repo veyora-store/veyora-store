@@ -201,34 +201,43 @@ function orderWhatsApp() {
   const state = document.getElementById("customerState").value.trim();
   const pincode = document.getElementById("customerPincode").value.trim();
 
-  if (!name || !phone || !house || !area || !city || !state || !pincode) {
+  if (
+    !name ||
+    !phone ||
+    !house ||
+    !area ||
+    !city ||
+    !state ||
+    !pincode
+  ) {
     alert("Please fill in all delivery details.");
     return;
   }
 
   let message = `🛍️ *NEW VEYORA STORE ORDER*
 
-👤 *Customer Details*
-Name: ${name}
-Phone: ${phone}
-House/Building: ${house}
-Area: ${area}
-City: ${city}
-State: ${state}
-Pincode: ${pincode}
+👤 *CUSTOMER DETAILS*
 
-📦 *ORDER ITEMS*
+Name: ${name}
+📱 Phone: ${phone}
+🏠 House/Building: ${house}
+📍 Area: ${area}
+🏙️ City: ${city}
+🗺️ State: ${state}
+📮 Pincode: ${pincode}
+
+📦 *ORDER DETAILS*
 
 `;
 
   let total = 0;
 
-  cart.forEach(item => {
-    const itemTotal = item.price * item.quantity;
+  cart.forEach((item, index) => {
 
+    const itemTotal = item.price * item.quantity;
     total += itemTotal;
 
-    message += `🛒 ${item.name}
+    message += `${index + 1}. ${item.name}
 Quantity: ${item.quantity}
 Price: ₹${itemTotal}
 
@@ -237,9 +246,12 @@ Price: ₹${itemTotal}
 
   message += `💰 *TOTAL: ₹${total}*
 
-Please confirm my order. 🙏`;
+✅ Please confirm this order.
 
-  // CHANGE THIS TO YOUR WHATSAPP NUMBER
+🙏 Thank you for shopping with VEYORA STORE!`;
+
+  // YOUR WHATSAPP NUMBER
+  // India: 91 + your 10-digit number
   const whatsappNumber = "919999999999";
 
   const whatsappURL =
