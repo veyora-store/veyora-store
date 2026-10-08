@@ -25,10 +25,10 @@ const products = [
 
   {
     id: 3,
-    name: "Premium Watch",
+    name: "Rosemary water",
     category: "lifestyle",
     price: 999,
-    image: "watch.png",
+    image: "file_00000000ccc48211b5df4d04422e6b03.png",
     description: "A stylish everyday watch with a premium modern appearance."
   },
 
