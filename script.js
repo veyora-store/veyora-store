@@ -6,11 +6,11 @@
 const products = [
   {
     id: 1,
-    name: "Minimal Table Lamp",
-    category: "home",
-    price: 499,
-    image: "lamp.png",
-    description: "Modern minimal table lamp for your room."
+    name: "Rosemary water",
+    category: "hair care",
+    price: 239,
+    image: "file_00000000ccc48211b5df4d04422e6b03.png",
+    description: "Hair care products."
   },
   {
     id: 2,
