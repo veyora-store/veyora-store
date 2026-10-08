@@ -626,6 +626,17 @@ function orderWhatsApp() {
   }
 
 
+   function orderInstagram() {
+    const instagramUsername = "YOUR_INSTAGRAM_USERNAME";
+
+    const instagramURL =
+        "https://instagram.com/" + instagramUsername;
+
+    window.location.href = instagramURL;
+      
+   }
+
+
   const name =
     document
       .getElementById("customerName")
