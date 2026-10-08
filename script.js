@@ -460,12 +460,133 @@ function closeProduct() {
 function orderWhatsApp() {
 
   if (cart.length === 0) {
-
     alert("Your cart is empty!");
+    return;
+  }
+
+  // Get customer details
+  const name =
+    document.getElementById("customerName").value.trim();
+
+  const phone =
+    document.getElementById("customerPhone").value.trim();
+
+  const house =
+    document.getElementById("customerHouse").value.trim();
+
+  const area =
+    document.getElementById("customerArea").value.trim();
+
+  const city =
+    document.getElementById("customerCity").value.trim();
+
+  const state =
+    document.getElementById("customerState").value.trim();
+
+  const pincode =
+    document.getElementById("customerPincode").value.trim();
+
+
+  // Check required details
+  if (
+    !name ||
+    !phone ||
+    !house ||
+    !area ||
+    !city ||
+    !state ||
+    !pincode
+  ) {
+
+    alert("Please fill in all delivery details.");
 
     return;
-
   }
+
+
+  // Create WhatsApp message
+  let message =
+    "🛍️ *NEW VEYORA STORE ORDER*%0A%0A";
+
+
+  message +=
+    "👤 *Customer Details*%0A";
+
+  message +=
+    "Name: " + name + "%0A";
+
+  message +=
+    "Phone: " + phone + "%0A";
+
+  message +=
+    "House/Building: " + house + "%0A";
+
+  message +=
+    "Area: " + area + "%0A";
+
+  message +=
+    "City: " + city + "%0A";
+
+  message +=
+    "State: " + state + "%0A";
+
+  message +=
+    "Pincode: " + pincode + "%0A%0A";
+
+
+  // Products
+  message +=
+    "📦 *ORDER ITEMS*%0A%0A";
+
+
+  let total = 0;
+
+
+  cart.forEach(item => {
+
+    const itemTotal =
+      item.price * item.quantity;
+
+    total += itemTotal;
+
+
+    message +=
+      "🛒 " + item.name + "%0A";
+
+    message +=
+      "Quantity: " + item.quantity + "%0A";
+
+    message +=
+      "Price: ₹" + itemTotal + "%0A%0A";
+
+  });
+
+
+  message +=
+    "💰 *TOTAL: ₹" + total + "*%0A%0A";
+
+  message +=
+    "Please confirm my order. 🙏";
+
+
+  // YOUR WHATSAPP NUMBER
+  const whatsappNumber =
+    "919999999999";
+
+
+  const whatsappURL =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    message;
+
+
+  window.open(
+    whatsappURL,
+    "_blank"
+  );
+
+}
 
 
   let message =
