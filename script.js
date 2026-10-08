@@ -4,190 +4,99 @@
 // ==========================================
 
 const products = [
-
   {
     id: 1,
     name: "Minimal Table Lamp",
     category: "home",
-    price: 799,
-    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
-    description: "A modern minimal lamp that adds a warm and elegant look to your room."
+    price: 499,
+    image: "lamp.png",
+    description: "Modern minimal table lamp for your room."
   },
-
   {
     id: 2,
     name: "Aesthetic Vase",
     category: "home",
-    price: 499,
-    image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=800&q=80",
-    description: "Elegant decorative vase for modern homes and bedrooms."
+    price: 399,
+    image: "vase.png",
+    description: "Beautiful aesthetic vase for home decoration."
   },
-
   {
     id: 3,
-    name: "Rosemary water",
+    name: "Premium Watch",
     category: "lifestyle",
     price: 999,
-    image: "file_00000000ccc48211b5df4d04422e6b03.png",
-    description: "A stylish everyday watch with a premium modern appearance."
+    image: "watch.png",
+    description: "Stylish premium watch for everyday use."
   },
-
   {
     id: 4,
     name: "Portable LED Light",
     category: "electronics",
     price: 599,
-    image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=80",
-    description: "Compact LED light for your desk, bedroom or workspace."
+    image: "led.png",
+    description: "Portable LED light with a modern design."
   },
-
   {
     id: 5,
     name: "Beauty Organizer",
     category: "beauty",
     price: 449,
-    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80",
-    description: "Keep your beauty essentials organized with this stylish organizer."
+    image: "beauty.png",
+    description: "Keep your cosmetics organized and clean."
   },
-
   {
     id: 6,
     name: "Modern Cushion",
     category: "home",
-    price: 399,
-    image: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=800&q=80",
-    description: "Soft decorative cushion designed for a comfortable modern interior."
+    price: 349,
+    image: "cushion.png",
+    description: "Soft and stylish cushion for your home."
   }
-
 ];
-
-
-// ==========================================
-// CART
-// ==========================================
 
 let cart = [];
 
-
-// ==========================================
-// DISPLAY PRODUCTS
-// ==========================================
+const productGrid = document.getElementById("productGrid");
 
 function displayProducts(list = products) {
-
-  const grid = document.getElementById("productGrid");
-
-  grid.innerHTML = "";
-
-  if (list.length === 0) {
-
-    grid.innerHTML = `
-      <p style="grid-column:1/-1;text-align:center;padding:50px;">
-        No products found.
-      </p>
-    `;
-
-    return;
-  }
+  productGrid.innerHTML = "";
 
   list.forEach(product => {
-
-    grid.innerHTML += `
-
+    productGrid.innerHTML += `
       <div class="product-card">
-
-        <img
-          class="product-image"
-          src="${product.image}"
-          alt="${product.name}"
-          loading="lazy"
-        >
+        <img src="${product.image}" alt="${product.name}"
+             onerror="this.style.display='none'">
 
         <div class="product-info">
+          <h3>${product.name}</h3>
+          <p class="price">₹${product.price}</p>
 
-          <div class="product-category">
-            ${product.category}
-          </div>
-
-          <div class="product-name">
-            ${product.name}
-          </div>
-
-          <div class="product-price">
-            ₹${product.price}
-          </div>
-
-          <div class="product-buttons">
-
-            <button
-              class="view-btn"
-              onclick="viewProduct(${product.id})">
-              VIEW
-            </button>
-
-            <button
-              class="add-btn"
-              onclick="addToCart(${product.id})">
-              ADD
-            </button>
-
-          </div>
-
+          <button onclick="viewProduct(${product.id})">
+            View Product
+          </button>
         </div>
-
       </div>
-
     `;
-
   });
-
 }
 
-
-// ==========================================
-// SEARCH
-// ==========================================
-
 function searchProducts() {
-
-  const search =
-    document
-      .getElementById("searchInput")
-      .value
-      .toLowerCase()
-      .trim();
+  const search = document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
 
   const results = products.filter(product =>
-
-    product.name
-      .toLowerCase()
-      .includes(search)
-
-    ||
-
-    product.category
-      .toLowerCase()
-      .includes(search)
-
+    product.name.toLowerCase().includes(search)
   );
 
   displayProducts(results);
-
 }
 
-
-// ==========================================
-// CATEGORY FILTER
-// ==========================================
-
 function filterProducts(category) {
-
   if (category === "all") {
-
     displayProducts(products);
-
     return;
-
   }
 
   const results = products.filter(
@@ -195,267 +104,87 @@ function filterProducts(category) {
   );
 
   displayProducts(results);
-
 }
 
-
-// ==========================================
-// ADD TO CART
-// ==========================================
-
 function addToCart(id) {
+  const product = products.find(p => p.id === id);
 
-  const product =
-    products.find(p => p.id === id);
-
-  if (!product) return;
-
-  const existing =
-    cart.find(item => item.id === id);
+  const existing = cart.find(item => item.id === id);
 
   if (existing) {
-
     existing.quantity++;
-
   } else {
-
     cart.push({
-
       ...product,
-
       quantity: 1
-
     });
-
   }
 
   updateCart();
-
-  alert(
-    product.name + " added to cart!"
-  );
-
+  closeProduct();
 }
 
-
-// ==========================================
-// UPDATE CART
-// ==========================================
-
 function updateCart() {
-
-  const cartItems =
-    document.getElementById("cartItems");
-
-  const cartCount =
-    document.getElementById("cartCount");
-
-  const cartTotal =
-    document.getElementById("cartTotal");
-
+  const cartItems = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
 
   cartItems.innerHTML = "";
 
-
   let total = 0;
 
-  let count = 0;
-
-
   cart.forEach(item => {
-
-    total +=
-      item.price * item.quantity;
-
-    count +=
-      item.quantity;
-
+    total += item.price * item.quantity;
 
     cartItems.innerHTML += `
-
       <div class="cart-item">
-
-        <img
-          src="${item.image}"
-          alt="${item.name}"
-        >
-
-        <div class="cart-item-info">
-
-          <h4>
-            ${item.name}
-          </h4>
-
-          <p>
-            ₹${item.price} × ${item.quantity}
-          </p>
-
+        <div>
+          <strong>${item.name}</strong>
+          <p>₹${item.price} × ${item.quantity}</p>
         </div>
 
-        <button
-          class="remove-btn"
-          onclick="removeFromCart(${item.id})">
-
+        <button onclick="removeFromCart(${item.id})">
           ✕
-
         </button>
-
       </div>
-
     `;
-
   });
 
-
-  if (cart.length === 0) {
-
-    cartItems.innerHTML = `
-      <p style="text-align:center;color:#777;">
-        Your cart is empty.
-      </p>
-    `;
-
-  }
-
-
-  cartCount.textContent = count;
-
-  cartTotal.textContent =
-    "₹" + total;
-
+  cartTotal.innerText = "₹" + total;
 }
-
-
-// ==========================================
-// REMOVE FROM CART
-// ==========================================
 
 function removeFromCart(id) {
-
-  cart =
-    cart.filter(item => item.id !== id);
-
+  cart = cart.filter(item => item.id !== id);
   updateCart();
-
 }
-
-
-// ==========================================
-// OPEN CART
-// ==========================================
 
 function openCart() {
-
-  document
-    .getElementById("cart")
-    .classList
-    .add("active");
-
-  document
-    .getElementById("cartOverlay")
-    .classList
-    .add("active");
-
+  document.getElementById("cartOverlay").classList.add("active");
 }
-
-
-// ==========================================
-// CLOSE CART
-// ==========================================
 
 function closeCart() {
-
-  document
-    .getElementById("cart")
-    .classList
-    .remove("active");
-
-  document
-    .getElementById("cartOverlay")
-    .classList
-    .remove("active");
-
+  document.getElementById("cartOverlay").classList.remove("active");
 }
-
-
-// ==========================================
-// PRODUCT DETAILS
-// ==========================================
 
 function viewProduct(id) {
+  const product = products.find(p => p.id === id);
 
-  const product =
-    products.find(p => p.id === id);
+  document.getElementById("productModal").classList.add("active");
 
-  if (!product) return;
-
-
-  document.getElementById(
-    "modalImage"
-  ).src = product.image;
-
-
-  document.getElementById(
-    "modalCategory"
-  ).textContent =
-    product.category;
-
-
-  document.getElementById(
-    "modalName"
-  ).textContent =
-    product.name;
-
-
-  document.getElementById(
-    "modalPrice"
-  ).textContent =
+  document.getElementById("modalImage").src = product.image;
+  document.getElementById("modalName").innerText = product.name;
+  document.getElementById("modalPrice").innerText =
     "₹" + product.price;
-
-
-  document.getElementById(
-    "modalDescription"
-  ).textContent =
+  document.getElementById("modalDescription").innerText =
     product.description;
 
-
-  document.getElementById(
-    "modalAddButton"
-  ).onclick =
-    function () {
-
-      addToCart(product.id);
-
-      closeProduct();
-
-    };
-
-
-  document
-    .getElementById("productModal")
-    .classList
-    .add("active");
-
+  document.getElementById("modalAddButton").onclick = function () {
+    addToCart(product.id);
+  };
 }
-
-
-// ==========================================
-// CLOSE PRODUCT
-// ==========================================
 
 function closeProduct() {
-
-  document
-    .getElementById("productModal")
-    .classList
-    .remove("active");
-
+  document.getElementById("productModal").classList.remove("active");
 }
-
-
-// ==========================================
-// WHATSAPP ORDER
-// ==========================================
 
 function orderWhatsApp() {
 
@@ -464,200 +193,63 @@ function orderWhatsApp() {
     return;
   }
 
-  // Get customer details
-  const name =
-    document.getElementById("customerName").value.trim();
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const house = document.getElementById("customerHouse").value.trim();
+  const area = document.getElementById("customerArea").value.trim();
+  const city = document.getElementById("customerCity").value.trim();
+  const state = document.getElementById("customerState").value.trim();
+  const pincode = document.getElementById("customerPincode").value.trim();
 
-  const phone =
-    document.getElementById("customerPhone").value.trim();
-
-  const house =
-    document.getElementById("customerHouse").value.trim();
-
-  const area =
-    document.getElementById("customerArea").value.trim();
-
-  const city =
-    document.getElementById("customerCity").value.trim();
-
-  const state =
-    document.getElementById("customerState").value.trim();
-
-  const pincode =
-    document.getElementById("customerPincode").value.trim();
-
-
-  // Check required details
-  if (
-    !name ||
-    !phone ||
-    !house ||
-    !area ||
-    !city ||
-    !state ||
-    !pincode
-  ) {
-
+  if (!name || !phone || !house || !area || !city || !state || !pincode) {
     alert("Please fill in all delivery details.");
-
     return;
   }
 
+  let message = `🛍️ *NEW VEYORA STORE ORDER*
 
-  // Create WhatsApp message
-  let message =
-    "🛍️ *NEW VEYORA STORE ORDER*%0A%0A";
+👤 *Customer Details*
+Name: ${name}
+Phone: ${phone}
+House/Building: ${house}
+Area: ${area}
+City: ${city}
+State: ${state}
+Pincode: ${pincode}
 
+📦 *ORDER ITEMS*
 
-  message +=
-    "👤 *Customer Details*%0A";
-
-  message +=
-    "Name: " + name + "%0A";
-
-  message +=
-    "Phone: " + phone + "%0A";
-
-  message +=
-    "House/Building: " + house + "%0A";
-
-  message +=
-    "Area: " + area + "%0A";
-
-  message +=
-    "City: " + city + "%0A";
-
-  message +=
-    "State: " + state + "%0A";
-
-  message +=
-    "Pincode: " + pincode + "%0A%0A";
-
-
-  // Products
-  message +=
-    "📦 *ORDER ITEMS*%0A%0A";
-
+`;
 
   let total = 0;
 
-
   cart.forEach(item => {
-
-    const itemTotal =
-      item.price * item.quantity;
+    const itemTotal = item.price * item.quantity;
 
     total += itemTotal;
 
+    message += `🛒 ${item.name}
+Quantity: ${item.quantity}
+Price: ₹${itemTotal}
 
-    message +=
-      "🛒 " + item.name + "%0A";
-
-    message +=
-      "Quantity: " + item.quantity + "%0A";
-
-    message +=
-      "Price: ₹" + itemTotal + "%0A%0A";
-
+`;
   });
 
+  message += `💰 *TOTAL: ₹${total}*
 
-  message +=
-    "💰 *TOTAL: ₹" + total + "*%0A%0A";
+Please confirm my order. 🙏`;
 
-  message +=
-    "Please confirm my order. 🙏";
-
-
-  // YOUR WHATSAPP NUMBER
-  const whatsappNumber =
-    "919999999999";
-
+  // CHANGE THIS TO YOUR WHATSAPP NUMBER
+  const whatsappNumber = "919999999999";
 
   const whatsappURL =
     "https://wa.me/" +
     whatsappNumber +
     "?text=" +
-    message;
+    encodeURIComponent(message);
 
-
-  window.open(
-    whatsappURL,
-    "_blank"
-  );
-
+  window.location.href = whatsappURL;
 }
 
-
-  let message =
-    "Hello VEYORA STORE 👋%0A%0A";
-
-  message +=
-    "I want to order:%0A%0A";
-
-
-  let total = 0;
-
-
-  cart.forEach(item => {
-
-    const itemTotal =
-      item.price * item.quantity;
-
-    total += itemTotal;
-
-
-    message +=
-      "🛍️ " +
-      item.name +
-      "%0A";
-
-    message +=
-      "Quantity: " +
-      item.quantity +
-      "%0A";
-
-    message +=
-      "Price: ₹" +
-      itemTotal +
-      "%0A%0A";
-
-  });
-
-
-  message +=
-    "💰 Total: ₹" +
-    total +
-    "%0A%0A";
-
-  message +=
-    "Please confirm my order. Thank you!";
-
-
-  // ======================================
-  // CHANGE THIS NUMBER TO YOUR WHATSAPP
-  // ======================================
-
-  const phone =
-    "9194973 80191";
-
-
-  const url =
-    "https://wa.me/" +
-    phone +
-    "?text=" +
-    message;
-
-
-  window.open(url, "_blank");
-
-}
-
-
-// ==========================================
-// START WEBSITE
-// ==========================================
-
-displayProducts();
-
+displayProducts(products);
 updateCart();
