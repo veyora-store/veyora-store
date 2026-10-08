@@ -396,6 +396,47 @@
 
        </div>
 
+      <div class="customer-form">
+    <h3>Delivery Details</h3>
+
+    <input type="text" id="customerName" placeholder="👤 Full Name" required>
+
+    <input type="tel" id="customerPhone" placeholder="📱 Contact Number" required>
+
+    <input type="text" id="customerHouse" placeholder="🏠 House No / Building Name" required>
+
+    <input type="text" id="customerArea" placeholder="📍 Road / Area / Colony" required>
+
+    <input type="text" id="customerCity" placeholder="🏙️ City" required>
+
+    <input type="text" id="customerState" placeholder="🗺️ State" required>
+
+    <input type="text" id="customerPincode" placeholder="📮 Pincode" maxlength="6" required>
+
+
+    <!-- PAYMENT METHOD -->
+    <div class="payment-method">
+        <h3>💳 Payment Method</h3>
+
+        <label class="payment-option">
+            <input type="radio" name="paymentMethod" value="cod" checked>
+            <span>💵 Cash on Delivery</span>
+        </label>
+    </div>
+
+
+    <!-- ORDER BUTTONS -->
+    <div class="order-buttons">
+        <button class="whatsapp-btn" onclick="orderWhatsApp()">
+            🟢 ORDER VIA WHATSAPP
+        </button>
+
+        <button class="instagram-btn" onclick="orderInstagram()">
+            📸 ORDER VIA INSTAGRAM
+        </button>
+    </div>
+      </div>
+
 
       <div class="order-buttons">
     <button class="whatsapp-btn" onclick="orderWhatsApp()">
