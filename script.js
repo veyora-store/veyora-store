@@ -630,7 +630,7 @@ function orderWhatsApp() {
     const instagramUsername = "veyora.store_";
 
     const instagramURL =
-        "https://instagram.com/" + instagramUsername;
+        "https://www.instagram.com/veyora.store_?stkn=MWQ0MWt2d29tb3FqMw==" + instagramUsername;
 
     window.location.href = instagramURL;
       
