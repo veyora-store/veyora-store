@@ -36,7 +36,7 @@ const products = [
     id: 3,
     name: "BLISS Handbags",
     category: "lifestyle",
-    price: 399,
+    price: 445,
     tag: "TRENDING",
     image: "ladybag.png",
     description:
