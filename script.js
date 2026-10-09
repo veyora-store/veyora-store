@@ -56,13 +56,13 @@ const products = [
 
   {
     id: 5,
-    name: "Beauty Organizer",
-    category: "beauty",
+    name: "Watches fo womens",
+    category: "lifestyle",
     price: 449,
     tag: "NEW",
-    image: "beauty.png",
+    image: "ladywatch.png",
     description:
-      "Keep your cosmetics, makeup and beauty essentials organized in one stylish place."
+      "⌚💖 Elegant ladies’ watch with a luxurious finish, timeless beauty, and a touch of sophistication. ✨🌸"
   },
 
   {
