@@ -797,7 +797,7 @@ Price: ₹${itemTotal}
   */
 
   const whatsappNumber =
-    "9194973 80191";
+    "919497380191";
 
 
   const whatsappURL =
