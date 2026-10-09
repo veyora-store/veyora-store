@@ -87,6 +87,17 @@ const products = [
       "A soft modern cushion designed to make your room more comfortable and stylish."
    },
 
+   {
+    id: 8,
+    name: "Modern Soft Cushion",
+    category: "home",
+    price: 349,
+    tag: "TRENDING",
+    image: "cushion.png",
+    description:
+      "A soft modern cushion designed to make your room more comfortable and stylish."
+   },
+
 ];
 
 
