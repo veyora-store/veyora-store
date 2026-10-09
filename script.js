@@ -67,33 +67,33 @@ const products = [
 
   {
     id: 6,
-    name: "Modern Soft Cushion",
+    name: "VEYORA",
     category: "home",
-    price: 349,
+    price: 00,
     tag: "TRENDING",
-    image: "cushion.png",
+    image: "veyora.png",
     description:
       "A soft modern cushion designed to make your room more comfortable and stylish."
   },
 
    {
     id: 7,
-    name: "Modern Soft Cushion",
+    name: "VEYORA",
     category: "home",
     price: 349,
     tag: "TRENDING",
-    image: "cushion.png",
+    image: "veyora.png",
     description:
       "A soft modern cushion designed to make your room more comfortable and stylish."
    },
 
    {
     id: 8,
-    name: "Modern Soft Cushion",
+    name: "VEYORA",
     category: "home",
     price: 349,
     tag: "TRENDING",
-    image: "cushion.png",
+    image: "veyora.png",
     description:
       "A soft modern cushion designed to make your room more comfortable and stylish."
    },
