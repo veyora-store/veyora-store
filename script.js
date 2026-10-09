@@ -13,16 +13,12 @@ const products = [
   {
     id: 1,
     name: "Rosemary water",
-    category: "lifestyle",
+    category: "Hair care",
     price: 349,
     tag: "BESTSELLER",
-    images: [
-    "file_00000000ccc48211b5df4d04422e6b03.png",
-    "watch2.jpg",
-    "watch3.jpg",
-    "watch4.jpg"
-],
-      "Healthy hair starts with nature."
+    image: "file_00000000ccc48211b5df4d04422e6b03.png",
+    description:
+      "Healthy hair starts with nature. 🌱✨  "
   },
 
   {
