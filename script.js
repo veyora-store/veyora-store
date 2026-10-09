@@ -729,19 +729,19 @@ function orderWhatsApp() {
 
   let message =
 
-`🛍️ *NEW VEYORA STORE ORDER*
+` *NEW VEYORA STORE ORDER*
 
-👤 *CUSTOMER DETAILS*
+ *CUSTOMER DETAILS*
 
 Name: ${name}
-📱 Phone: ${phone}
-🏠 House/Building: ${house}
-📍 Area: ${area}
-🏙️ City: ${city}
-🗺️ State: ${state}
-📮 Pincode: ${pincode}
+ Phone: ${phone}
+ House/Building: ${house}
+ Area: ${area}
+ City: ${city}
+ State: ${state}
+ Pincode: ${pincode}
 
-📦 *ORDER DETAILS*
+ *ORDER DETAILS*
 
 `;
 
@@ -774,11 +774,11 @@ Price: ₹${itemTotal}
 
   message +=
 
-`💰 *TOTAL: ₹${total}*
+` *TOTAL: ₹${total}*
 
-✅ Please confirm my order.
+ Please confirm my order.
 
-🙏 Thank you for shopping with VEYORA STORE!`;
+ Thank you for shopping with VEYORA STORE!`;
 
 
   /*
