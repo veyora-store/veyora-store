@@ -45,13 +45,13 @@ const products = [
 
   {
     id: 4,
-    name: "Portable LED Light",
-    category: "electronics",
-    price: 599,
+    name: "BRIT ACCENT",
+    category: "lifestyle",
+    price: 1229,
     tag: "POPULAR",
-    image: "led.png",
+    image: "perfume.png",
     description:
-      "Compact portable LED light with a modern design. Perfect for home, travel and everyday use."
+      "🌊 Fresh Depth of Ocean & bold Canyon fragrances."
   },
 
   {
