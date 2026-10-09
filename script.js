@@ -73,7 +73,7 @@ const products = [
     tag: "TRENDING",
     image: "veyora.png",
     description:
-      "A soft modern cushion designed to make your room more comfortable and stylish."
+      "VEYORA STORE"
   },
 
    {
@@ -84,7 +84,7 @@ const products = [
     tag: "TRENDING",
     image: "veyora.png",
     description:
-      "A soft modern cushion designed to make your room more comfortable and stylish."
+      "VEYORA STORE"
    },
 
    {
@@ -95,7 +95,7 @@ const products = [
     tag: "TRENDING",
     image: "veyora.png",
     description:
-      "A soft modern cushion designed to make your room more comfortable and stylish."
+      "VEYORA STORE"
    },
 
 ];
