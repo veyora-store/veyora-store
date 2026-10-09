@@ -56,7 +56,7 @@ const products = [
 
   {
     id: 5,
-    name: "Watches fo womens",
+    name: "Watches for womens",
     category: "lifestyle",
     price: 449,
     tag: "NEW",
