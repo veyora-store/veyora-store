@@ -69,7 +69,7 @@ const products = [
     id: 6,
     name: "VEYORA",
     category: "home",
-    price: 00,
+    price: 000,
     tag: "TRENDING",
     image: "veyora.png",
     description:
@@ -80,7 +80,7 @@ const products = [
     id: 7,
     name: "VEYORA",
     category: "home",
-    price: 349,
+    price: 000,
     tag: "TRENDING",
     image: "veyora.png",
     description:
@@ -91,7 +91,7 @@ const products = [
     id: 8,
     name: "VEYORA",
     category: "home",
-    price: 349,
+    price: 000,
     tag: "TRENDING",
     image: "veyora.png",
     description:
