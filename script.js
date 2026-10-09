@@ -16,8 +16,12 @@ const products = [
     category: "lifestyle",
     price: 349,
     tag: "BESTSELLER",
-    image: "file_00000000ccc48211b5df4d04422e6b03.png",
-    description:
+    images: [
+    "file_00000000ccc48211b5df4d04422e6b03.png",
+    "watch2.jpg",
+    "watch3.jpg",
+    "watch4.jpg"
+],
       "Healthy hair starts with nature."
   },
 
