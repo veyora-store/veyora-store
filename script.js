@@ -34,13 +34,13 @@ const products = [
 
   {
     id: 3,
-    name: "Aesthetic Decorative Vase",
-    category: "home",
+    name: "BLISS Handbags",
+    category: "lifestyle",
     price: 399,
     tag: "TRENDING",
-    image: "vase.png",
+    image: "ladybag.png",
     description:
-      "A beautiful decorative vase that adds a clean and aesthetic touch to your home."
+      "✨ Elegance in every shade 👜💖 | Shop the BLISS Handbag"
   },
 
   {
