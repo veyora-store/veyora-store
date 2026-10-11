@@ -58,7 +58,7 @@ const products = [
     id: 5,
     name: "Watches for womens",
     category: "lifestyle",
-    price: 449,
+    price: 223,
     tag: "NEW",
     image: "ladywatch.png",
     description:
