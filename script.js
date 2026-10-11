@@ -78,13 +78,13 @@ const products = [
 
    {
     id: 7,
-    name: "VEYORA",
-    category: "home",
-    price: 000,
+    name: "SKINBULL wallets",
+    category: "lifestyle",
+    price: 499,
     tag: "TRENDING",
-    image: "veyora.png",
+    image: "SKINBULLwallets.png",
     description:
-      "VEYORA STORE"
+      "👛Elevate your everyday style with SKINBULL wallets"
    },
 
    {
