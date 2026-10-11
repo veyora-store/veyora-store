@@ -1,4 +1,4 @@
-8/* =====================================================
+/* =====================================================
    VEYORA STORE
    PRODUCT + CART + WHATSAPP SYSTEM
 ===================================================== */
@@ -11,7 +11,7 @@
 const products = [
 
   {
-    id: 2,
+    id: 1,
     name: "Rosemary water",
     category: "Hair care",
     price: 349,
@@ -22,7 +22,7 @@ const products = [
   },
 
   {
-    id: 1,
+    id: 2,
     name: "Premium watch",
     category: "lifestyle",
     price: 399,
