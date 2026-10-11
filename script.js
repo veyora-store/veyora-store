@@ -1,4 +1,4 @@
-/* =====================================================
+8/* =====================================================
    VEYORA STORE
    PRODUCT + CART + WHATSAPP SYSTEM
 ===================================================== */
@@ -67,13 +67,13 @@ const products = [
 
   {
     id: 6,
-    name: "VEYORA",
-    category: "home",
-    price: 000,
+    name: "Korean sliver plated pendant",
+    category: "lifestyle",
+    price: 268,
     tag: "TRENDING",
-    image: "veyora.png",
+    image: "Koreansliverplatedpendant.png",
     description:
-      "VEYORA STORE"
+      "💎 Perfect for everyday wear & gifting"
   },
 
    {
