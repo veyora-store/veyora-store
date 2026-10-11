@@ -89,13 +89,13 @@ const products = [
 
    {
     id: 8,
-    name: "VEYORA",
-    category: "home",
-    price: 000,
+    name: "FACE CANADA 3 in 1 combo",
+    category: "beauty",
+    price: 1199,
     tag: "TRENDING",
-    image: "veyora.png",
+    image: "canada.png",
     description:
-      "VEYORA STORE"
+      "Glow effortlessly with Faces Canada’s ultimate beauty combo for radiant skin, flawless coverage, and bold lips. ✨💄"
    },
 
 ];
