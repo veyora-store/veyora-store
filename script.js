@@ -109,6 +109,18 @@ const products = [
       "🥗 Quick chopping made easy! 🔪✨ Durable, fast & perfect for every kitchen 🏡💚"
   },
 
+   {
+  id: 10,
+  name: "Premium Stainless Steel Watch",
+  category: "lifestyle",
+  price: 399,
+  images: "watch1.jpg",
+  description: "Stylish everyday watch.",
+  rating: 4.8,
+  reviewCount: 126,
+  boughtCount: 350
+},
+
 ];
 
 
