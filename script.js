@@ -104,7 +104,7 @@ const products = [
     category: "kitchen",
     price: 0,
     tag: "POPULAR",
-    image: "perfume.png",
+    image: "chopper.png",
     description:
       "🥗 Quick chopping made easy! 🔪✨ Durable, fast & perfect for every kitchen 🏡💚"
   },
