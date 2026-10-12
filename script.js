@@ -98,6 +98,17 @@ const products = [
       "Glow effortlessly with Faces Canada’s ultimate beauty combo for radiant skin, flawless coverage, and bold lips. ✨💄"
    },
 
+   {
+    id: 9,
+    name: "Vegetable chopper",
+    category: "kitchen",
+    price: 0,
+    tag: "POPULAR",
+    image: "perfume.png",
+    description:
+      "🥗 Quick chopping made easy! 🔪✨ Durable, fast & perfect for every kitchen 🏡💚"
+  },
+
 ];
 
 
