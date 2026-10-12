@@ -102,7 +102,7 @@ const products = [
     id: 9,
     name: "Vegetable chopper",
     category: "kitchen",
-    price: 0,
+    price: 176,
     tag: "POPULAR",
     image: "chopper.png",
     description:
