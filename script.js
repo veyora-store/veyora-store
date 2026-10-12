@@ -19,9 +19,6 @@ const products = [
     image: "file_00000000ccc48211b5df4d04422e6b03.png",
     description:
       "Healthy hair starts with nature. 🌱✨  "
-     rating: 4.8,
-     reviewCount: 126,
-     boughtCount: 350,
   },
 
   {
